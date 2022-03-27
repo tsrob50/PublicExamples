@@ -17,7 +17,7 @@ New-AzResourceGroupDeployment `
 # Template Spec variables
 $tempSpecsName = 'WebAppTempSpecs'
 $tempSpecsRg = 'templateSpecsRG'
-$tempSpecsVer = '1.3'
+$tempSpecsVer = '1.0'
 
 # Create the resouce group
 New-AzResourceGroup `
