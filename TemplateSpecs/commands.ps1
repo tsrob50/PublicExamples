@@ -1,6 +1,6 @@
 # Deployment variables 
-$location = 'CentralUS'
-$projectRg = 'WebAppProjectRG'
+$location = '<Location>'
+$projectRg = '<Project Name>'
 
 # Create the deployment Resouce Group
 New-AzResourceGroup `
@@ -10,13 +10,13 @@ New-AzResourceGroup `
 New-AzResourceGroupDeployment `
     -ResourceGroupName $projectRg `
     -Templatefile azuredeploy.json `
-    -projectName 'cirTest' `
+    -projectName '<Project Name>' `
     -storageSKU  'Standard_ZRS'
 
 # Create the Template Spec
 # Template Spec variables
-$tempSpecsName = 'WebAppTempSpecs'
-$tempSpecsRg = 'templateSpecsRG'
+$tempSpecsName = '<Template Specs Name>'
+$tempSpecsRg = '<Template Specs Resource Group>'
 $tempSpecsVer = '1.0'
 
 # Create the resouce group
@@ -40,7 +40,7 @@ $templateSpecID = (Get-AzTemplateSpec -ResourceGroupName $tempSpecsRg -Name $tem
 New-AzResourceGroupDeployment `
     -ResourceGroupName $projectRg `
     -TemplateSpecId $templateSpecID `
-    -projectName 'cirTest' `
+    -projectName '<Project Name>' `
     -storageSKU  'Standard_ZRS'
 
 
@@ -48,6 +48,6 @@ New-AzResourceGroupDeployment `
 New-AzResourceGroupDeployment `
     -ResourceGroupName $projectRg `
     -TemplateSpecId $templateSpecID `
-    -projectName 'cirTest' `
+    -projectName '<Project Name>' `
     -storageSKU  'Standard_ZRS' `
     -tags @{Environment = "Lab"}
